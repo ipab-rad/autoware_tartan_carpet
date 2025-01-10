@@ -1,0 +1,9 @@
+repositories:
+  tartan/av_car_description:
+    type: git
+    url: git@github.com:ipab-rad/av_car_description.git
+    version: add-autoware-comp
+  tartan/av_autoware_interface:
+    type: git
+    url: git@github.com:ipab-rad/av_autoware_interface.git
+    version: init-config
