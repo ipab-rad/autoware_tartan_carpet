@@ -76,10 +76,10 @@ repositories:
     url: https://github.com/autowarefoundation/trt_batched_nms.git
     version: main
   # launcher
-  launcher/autoware_launch:
-    type: git
-    url: https://github.com/autowarefoundation/autoware_launch.git
-    version: 0.41.0
+  # launcher/autoware_launch:
+  #   type: git
+  #   url: https://github.com/autowarefoundation/autoware_launch.git
+  #   version: 0.41.0
   # sensor_component
   sensor_component/external/sensor_component_description:
     type: git
