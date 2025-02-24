@@ -3,4 +3,4 @@ repositories:
   launcher/autoware_launch:
     type: git
     url: git@github.com:ipab-rad/autoware_launch.git
-    version: tartan_main
+    version: launch_perception
