@@ -25,6 +25,7 @@ WORKSPACE_PATH=""
 USER_ID=""
 WORKSPACE=""
 AUTOWARE_DATA_PATH="$HOME/autoware_data"
+ROSBAGS_DIR="$HOME/rosbags"
 DEFAULT_LAUNCH_CMD="ros2 launch autoware_launch autoware.launch.xml map_path:=/autoware_map vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit"
 
 # Function to print help message
@@ -106,6 +107,13 @@ set_variables() {
             exit 1
         fi
         WORKSPACE+=" -v ${AUTOWARE_DATA_PATH}:/autoware_data"
+
+        # Verify rosbags directory exists
+        if [ ! -d "$ROSBAGS_DIR" ]; then
+            echo "$ROSBAGS_DIR does not exist! Please crate it first"
+            exit 1
+        fi
+        WORKSPACE+=" -v ${ROSBAGS_DIR}:/workspace/rosbags"
 
         # Set user ID and group ID to match the local user
         USER_ID="-e LOCAL_UID=$(id -u) -e LOCAL_GID=$(id -g) -e LOCAL_USER=$(id -un) -e LOCAL_GROUP=$(id -gn)"
