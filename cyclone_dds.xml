@@ -3,9 +3,8 @@
     <Domain Id="any">
         <General>
             <Interfaces>
-              <!-- <NetworkInterface name="lo" /> -->
+              <NetworkInterface name="lo" />
             </Interfaces>
-            <!-- <MaxMessageSize>65500B</MaxMessageSize> -->
         </General>
         <Internal>
             <SocketReceiveBufferSize min="15MB"/>

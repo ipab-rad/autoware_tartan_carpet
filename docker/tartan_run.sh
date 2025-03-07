@@ -194,11 +194,23 @@ main() {
     echo -e "${GREEN}LAUNCH CMD:${NC} ${LAUNCH_CMD}"
     echo -e "${GREEN}-----------------------------------------------------------------${NC}"
 
+    # Cyclone DDS env
+    CYCLONEDDS_URI=file:///cyclone_dds.xml
+
+    # Check if ROS_DOMAIN_ID is set; exit if undefined
+    if [[ -z "${ROS_DOMAIN_ID}" ]]; then
+        echo "Error: ROS_DOMAIN_ID is not set. Please export it before running this script."
+        echo "       export ROS_DOMAIN_ID=<my_unique_id>"
+        exit 1
+    fi
+
     # Launch the container
     set -x
     docker run -it --rm --privileged --net=host ${GPU_FLAG} ${USER_ID} ${MOUNT_X} \
         -e XAUTHORITY=${XAUTHORITY} -e XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" -e NVIDIA_DRIVER_CAPABILITIES=all -v /etc/localtime:/etc/localtime:ro \
         --name autoware_tartan \
+        -e ROS_DOMAIN_ID=$ROS_DOMAIN_ID \
+        -e CYCLONEDDS_URI=$CYCLONEDDS_URI \
         -v ./cyclone_dds.xml:/cyclone_dds.xml \
         -v /dev:/dev \
         -v /tmp:/tmp \
