@@ -3,9 +3,13 @@
     <Domain Id="any">
         <General>
             <Interfaces>
-              <NetworkInterface name="lo" />
+                <NetworkInterface name="lo" />
             </Interfaces>
         </General>
+        <Discovery>
+            <ParticipantIndex>auto</ParticipantIndex>
+            <MaxAutoParticipantIndex>180</MaxAutoParticipantIndex>
+        </Discovery>
         <Internal>
             <SocketReceiveBufferSize min="15MB"/>
             <Watermarks>
